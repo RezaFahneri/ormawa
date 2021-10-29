@@ -19,7 +19,7 @@ class Akun extends CI_Controller
         // $data['profil'] = $this->model_admin->get_data('tbl_login')->result();
         // $this->model_akun->keamanan();
         $this->load->view('header', $data);
-        $this->load->view('komdisma/daftar_akun', $data);
+        $this->load->view('komdisma/v_daftar_akun', $data);
         $this->load->view('footer');
     }
 
@@ -31,7 +31,7 @@ class Akun extends CI_Controller
         // $data['profil'] = $this->model_admin->get_data('tbl_login')->result();
         // $this->model_login->keamanan();
         $this->load->view('header', $data);
-        $this->load->view('komdisma/tambah_akun', $data);
+        $this->load->view('komdisma/v_tambah_akun', $data);
         $this->load->view('footer');
     }
 
@@ -98,7 +98,7 @@ class Akun extends CI_Controller
         // $data['profil'] = $this->model_admin->get_data('tbl_login')->result();
         // $this->model_login->keamanan();
         $this->load->view('header', $data);
-        $this->load->view('komdisma/edit_akun', $data);
+        $this->load->view('komdisma/v_edit_akun', $data);
         $this->load->view('footer');
     }
 
@@ -128,7 +128,7 @@ class Akun extends CI_Controller
                 'id_login' => $id
             );
 
-            $this->model_akun->update_data('tbl_login', $data, $where);
+            $this->model_akun->update_data($where,$data,'tbl_login');
             $this->session->set_flashdata('pesan', '<div class="alert alert-primary alert-dismissible fade show" role="alert">
         <strong>Data akun berhasil diupdate!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

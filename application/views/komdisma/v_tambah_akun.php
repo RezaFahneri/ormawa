@@ -2,7 +2,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>beranda_komdisma" aria-expanded="false">
+            <a class="nav-link" href="<?php echo base_url(); ?>beranda/komdisma" aria-expanded="false">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Beranda</span>
             </a>
@@ -14,7 +14,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="profil.php" aria-expanded="false">
+            <a class="nav-link" href="<?php echo base_url(); ?>profil" aria-expanded="false">
                 <i class="icon-bar-graph menu-icon"></i>
                 <span class="menu-title">Profil</span>
             </a>
