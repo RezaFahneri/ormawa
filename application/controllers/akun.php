@@ -1,15 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Akun extends CI_Controller
-{
-    function __construct()
-    {
-        parent::__construct();
-        $this->load->model('model_akun');
-        $this->load->helper('url');
-    }
-
+class Akun extends CI_Controller{
     public function index()
     {
         // $data['user'] = $this->db->get_where('tbl_login',['username' =>

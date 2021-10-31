@@ -20,7 +20,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="proker.php" aria-expanded="false">
+            <a class="nav-link" href="<?php echo base_url(); ?>proker" aria-expanded="false">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Program Kerja</span>
             </a>

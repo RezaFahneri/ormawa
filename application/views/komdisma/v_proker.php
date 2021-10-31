@@ -13,13 +13,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>profil">
+            <a class="nav-link" href="<?php echo base_url(); ?>profil"  aria-expanded="false">
                 <i class="icon-bar-graph menu-icon"></i>
                 <span class="menu-title">Profil</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>proker" aria-expanded="false">
+            <a class="nav-link" href="<?php echo base_url(); ?>proker">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Program Kerja</span>
             </a>
@@ -30,48 +30,50 @@
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 grid-margin">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h3 class="m-0 font-weight-bold text-primary">Profil Ormawa</h3><br>
-                                <a href="<?php echo base_url(); ?>profil/tambahprofil" class="btn btn-primary">Tambah Profil</a>
+                                <h3 class="m-0 font-weight-bold text-primary">Program Kerja Ormawa</h3><br>
+                                <a href="<?php echo base_url(); ?>proker/tambahproker" class="btn btn-primary">Tambah Program Kerja</a>
                                 <hr>
                             </div>
                             <div class="card-body">
-                                <table class="table table-center table-no-bordered" style="padding:100px">
+                                <table class="table table-no-bordered">
                                     <?php $no = 1;
-                                    foreach ($profil as $p) : ?>
+                                    foreach ($proker as $p) : ?>
                                         <tr>
-                                            <th>No </th>
-                                            <td><span><?php echo $no++ ?></span></td>
+                                            <th>No</th>
+                                            <td><?php echo $no++ ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Ormawa </th>
-                                            <td><span><?php echo $p->nama_ormawa ?></span></td>
+                                            <th>Ormawa</th>
+                                            <td><?php echo $p->nama_ormawa ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Sejarah </th>
-                                            <td><span><?php echo $p->sejarah ?></span></td>
+                                            <th>Program Kerja</th>
+                                            <td><?php echo $p->nama_proker ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Visi Misi </th>
-                                            <td><span>
-                                                    <p><?php echo $p->visi_misi ?>
-                                                </span></td>
+                                            <th>Deskripsi</th>
+                                            <td><?php echo $p->deskripsi ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Sekretariat </th>
-                                            <td><span><?php echo $p->sekretariat ?></span></td>
+                                            <th>Target</th>
+                                            <td><?php echo $p->target ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Kontak </th>
-                                            <td><span><?php echo $p->kontak ?></span></td>
+                                            <th>Tanggal</th>
+                                            <td><?php echo $p->tanggal ?></td>
                                         </tr>
                                         <tr>
-                                            <th><a class="btn btn-primary" href="<?php echo base_url('profil/updatedata/' . $p->id_profil) ?> ">Edit</a>
-                                                <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger" href="<?php echo base_url('profil/deletedata/' . $p->id_profil) ?> ">Delete</a>
+                                            <th>Status</th>
+                                            <td><?php echo $p->status ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th><a class="btn btn-primary" href="<?php echo base_url('proker/updatedata/' . $p->id_proker) ?> ">Edit</a>
+                                                <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger" href="<?php echo base_url('proker/deletedata/' . $p->id_proker) ?> ">Delete</a>
                                             </th>
                                         </tr>
                                         <tr>

@@ -19,7 +19,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="proker.php" aria-expanded="false">
+            <a class="nav-link" href="<?php echo base_url(); ?>proker" aria-expanded="false">
                 <i class="icon-paper menu-icon"></i>
                 <span class="menu-title">Program Kerja</span>
             </a>
@@ -41,6 +41,7 @@
                             <form method="POST" action="<?php echo base_url('akun/updatedataaksi'); ?>">
                                 <div class="form-group">
                                     <label>Nama</label>
+                                    <input type="hidden" name="id_login" class="form-control" value="<?php echo $to->id_login ?>" >
                                     <input type="text" name="nama" class="form-control" value="<?php echo $to->nama ?>">
                                     <?php echo form_error('nama', '<div class="text-small text-danger"></div>') ?>
                                 </div>
