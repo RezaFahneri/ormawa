@@ -28,7 +28,11 @@
     </ul>
 </nav>
 
+<?php
 
+include "assets/fpdf/panggildataakun.php";
+
+?>
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -68,13 +72,14 @@
                                                     <td><?php echo $d->status ?></td>
                                                     <td><?php echo $d->username ?></td>
                                                     <td>
-                                                        <a class="btn btn-sm btn-primary" href="<?php echo base_url('akun/updatedata/'.$d->id_login)?>"><i class="mdi mdi-lead-pencil"></i></a>
-                                                        <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-danger" href="<?php echo base_url('akun/deletedata/'.$d->id_login)?>"><i class="mdi mdi-delete"></i></a>
+                                                        <a class="btn btn-sm btn-primary" href="<?php echo base_url('akun/updatedata/' . $d->id_login) ?>"><i class="mdi mdi-lead-pencil"></i></a>
+                                                        <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-danger" href="<?php echo base_url('akun/deletedata/' . $d->id_login) ?>"><i class="mdi mdi-delete"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
-                                    </table>
+                                    </table></br>
+                                    <a class="btn btn-danger ti-download" href="assets/fpdf/data_akun.php"> Unduh</a>
                                 </div>
                             </div>
                         </div>

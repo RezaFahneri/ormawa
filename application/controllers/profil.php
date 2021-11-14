@@ -16,6 +16,17 @@ class Profil extends CI_Controller{
         $this->load->view('footer');
     }
 
+    public function detail($id)
+	{
+   		$data['title']="Detail Profil | Ormawa SV IPB";
+    	$detail = $this->model_profil->detail_data($id);
+    	$data['detail'] = $detail;
+    	$this->load->view('header',$data);
+    	$this->load->view('komdisma/v_detail_profil',$data);
+    	$this->load->view('footer');
+    
+   }
+
     public function tambahprofil()
     {
         // $data['user'] = $this->db->get_where('tbl_profil',['username' =>

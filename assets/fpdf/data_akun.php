@@ -10,7 +10,7 @@ $conn = mysqli_connect($host, $user, $pass,$dbnm);
 //akhir koneksi
  
 #ambil data di tabel dan masukkan ke array
-$query = "SELECT NIK,NIP,nama_lengkap,username,password FROM tbl_komdisma ORDER BY nama_lengkap";
+$query = "SELECT nama,foto,status,username FROM tbl_login ORDER BY status";
 $sql = mysqli_query ($conn,$query);
 $data = array();
 while ($row = mysqli_fetch_assoc($sql)) {
@@ -18,21 +18,26 @@ while ($row = mysqli_fetch_assoc($sql)) {
 }
  
 #setting judul laporan dan header tabel
-$judul = "DATA KOMDISMA";
-$header = array("label"=>"NIK", "length"=>30, "align"=>"C");
-$header = array("label"=>"NIP", "length"=>30, "align"=>"C");
-$header = array("label"=>"Nama Lengkap", "length"=>40, "align"=>"C");
-$header = array("label"=>"Username", "length"=>25, "align"=>"C");
-$header = array("label"=>"Password", "length"=>70, "align"=>"C");
+$header = array(
+	array("label"=>"Nama", "length"=>50, "align"=>"C"),
+	array("label"=>"Foto", "length"=>25, "align"=>"C"),
+	array("label"=>"Status", "length"=>25, "align"=>"C"),
+	array("label"=>"Username", "length"=>30, "align"=>"C")
+);
  
 #sertakan library FPDF dan bentuk objek
 require_once('fpdf182/fpdf.php');
 $pdf = new FPDF('P','mm','A4');
 $pdf->AddPage();
+$pdf->Image('gambar/logoipb.png',10,10,-300);
+$pdf->SetFont('Arial','B',16);
+$pdf->Cell(190,7,'Sistem Informasi Ormawa SV IPB',0,1,'C');
+$pdf->SetFont('Arial','B',12);
+$pdf->Cell(190,7,'Data Akun Pengguna',0,1,'C');
+$pdf->Cell(10,7,'',0,1);
  
 #tampilkan judul laporan
 $pdf->SetFont('Arial','B','16');
-$pdf->Cell(0,20, $judul, '0', 1, 'C');
  
 #buat header tabel
 $pdf->SetFont('Arial','','10');
@@ -55,7 +60,7 @@ foreach ($data as $baris) {
 	//echo "<br>";
 	$i = 0;
 	foreach ($baris as $cell) {
-		$pdf->Cell($header[$i]['length'], 5, $cell, 1, '0', $kolom['align'], $fill);
+		$pdf->Cell($header[$i]['length'], 4, $cell, 1, '0', $kolom['align'], $fill);
 		$i++;
 	}
 	$fill = !$fill;

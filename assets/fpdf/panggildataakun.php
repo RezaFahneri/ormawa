@@ -1,13 +1,13 @@
 <?php
     class DbConn {
         private $host = 'localhost';
-        private $NIP = 'root';
+        private $nama = 'root';
         private $password = '';
         private $db_name = 'ormawa';
         private $conn;
 
         public function __construct() {
-            $this->conn = mysqli_connect($this->host, $this->NIP, $this->password, $this->db_name) or die('Connection failed.');
+            $this->conn = mysqli_connect($this->host, $this->nama, $this->password, $this->db_name) or die('Connection failed.');
         }
 
         public function getConn() {
@@ -18,8 +18,8 @@
     class Users {
         private $table = 'users';
 
-        public function __construct($NIP = null, $password = null) {
-            $this->NIP = $NIP;
+        public function __construct($nama = null, $password = null) {
+            $this->nama = $nama;
             $this->password = $password;
 
             $conn = new DbConn();
@@ -28,8 +28,8 @@
         }
 
         public function insert() {
-            $sql = 'INSERT INTO '.$this->table.' (NIP, password) 
-                    VALUES ("'.$this->NIP.'", "'.$this->password.'")';
+            $sql = 'INSERT INTO '.$this->table.' (nama, password) 
+                    VALUES ("'.$this->nama.'", "'.$this->password.'")';
             
             return mysqli_query($this->conn, $sql);
         }
@@ -37,14 +37,14 @@
         public function read() {}
 
         public function update($id) {
-            $sql = 'UPDATE '.$this->table.' SET NIP = "'.$this->NIP.'", 
-                    password = "'.$this->password.'" WHERE id_users = "'.$id.'"';
+            $sql = 'UPDATE '.$this->table.' SET nama = "'.$this->nama.'", 
+                    password = "'.$this->password.'" WHERE id_login = "'.$id.'"';
 
             return mysqli_query($this->conn, $sql);
         }
 
         public function delete($id) {
-            $sql = 'DELETE FROM '.$this->table.' WHERE id_users = "'.$id.'"';
+            $sql = 'DELETE FROM '.$this->table.' WHERE id_login = "'.$id.'"';
 
             return mysqli_query($this->conn, $sql);
         }
@@ -54,21 +54,19 @@
         }
     }
 
-    class profil {
-        private $table = 'tbl_profil';
+    class pdfakun {
+        private $table = 'tbl_login';
 
-        public function __construct($NIK = null, $NIP = null, $nama_lengkap = null, $username = null,$email = null,$status = null) {
+        public function __construct($nama = null, $foto = null, $status = null, $username = null) {
             $conn = new DbConn();
             
             $this->conn = $conn->getConn();
 
             // $this->id = $id;
-            $this->NIK = $NIK;
-            $this->NIP = $NIP;
-            $this->nama_lengkap = $nama_lengkap;
-            $this->username = $username;
-            $this->email = $email;
+            $this->nama = $nama;
+            $this->foto = $foto;
             $this->status = $status;
+            $this->username = $username;
         }
 
         public function insert() {  
@@ -76,8 +74,8 @@
 
             $user->insert();
             
-            $sql = 'INSERT INTO '.$this->table.' (NIK, NIP, nama_lengkap,username,email,status) 
-            VALUES ("'.$this->NIK.'", "'.$this->NIP.'", "'.$this->nama_lengkap.'","'.$this->username.'", "'.$this->email.'", "'.$this->status.'","'.$user->last_id().'")';
+            $sql = 'INSERT INTO '.$this->table.' (nama, foto, status,username,email,status) 
+            VALUES ("'.$this->nama.'", "'.$this->foto.'", "'.$this->status.'","'.$this->username.'","'.$user->last_id().'")';
 
             return mysqli_query($this->conn, $sql);
         }

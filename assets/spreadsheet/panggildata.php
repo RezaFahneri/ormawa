@@ -54,19 +54,20 @@
         }
     }
 
-    class akt_login {
-        private $table = 'tbl_akt_login';
+    class xlsxprofil {
+        private $table = 'tbl_profil';
 
-        public function __construct($nama = null, $username = null, $status = null,  $waktu_akses = null) {
+        public function __construct($nama_ormawa = null, $sejarah = null, $visi_misi = null,  $sekretariat = null, $kontak = null) {
             $conn = new DbConn();
             
             $this->conn = $conn->getConn();
 
             // $this->id = $id;
-            $this->nama = $nama;
-            $this->username = $username;
-            $this->status = $status;
-            $this->waktu_akses = $waktu_akses;
+            $this->nama_ormawa = $nama_ormawa;
+            $this->sejarah = $sejarah;
+            $this->visi_misi = $visi_misi;
+            $this->sekretariat = $sekretariat;
+            $this->kontak = $kontak;
         }
 
         public function insert() {  
@@ -74,8 +75,8 @@
 
             $user->insert();
             
-            $sql = 'INSERT INTO '.$this->table.' (nama, username, status, waktu_akses) 
-            VALUES ("'.$this->nama.'", "'.$this->username.'", "'.$this->status.'", "'.$this->waktu_akses.'", "'.$user->last_id().'")';
+            $sql = 'INSERT INTO '.$this->table.' (nama_ormawa, sejarah, visi_misi, sekretariat, kontak) 
+            VALUES ("'.$this->nama_ormawa.'", "'.$this->sejarah.'", "'.$this->visi_misi.'", "'.$this->sekretariat.'", "'.$this->kontak.'", "'.$user->last_id().'")';
 
             return mysqli_query($this->conn, $sql);
         }

@@ -6,6 +6,11 @@ class Model_profil extends CI_model
         return $this->db->get($table);
     }
 
+    public function detail_data($id=NULL){
+		$query = $this->db->get_where('tbl_profil', array('id_profil' => $id)) ->row();
+		return $query;
+	}
+
     public function insert_data($data, $table)
     {
         $this->db->insert($table, $data);
