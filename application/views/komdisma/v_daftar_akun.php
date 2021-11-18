@@ -2,7 +2,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>beranda/komdisma" aria-expanded="false">
+            <a class="nav-link" href="<?php echo base_url(); ?>beranda" aria-expanded="false">
                 <i class="icon-grid menu-icon"></i>
                 <span class="menu-title">Beranda</span>
             </a>
@@ -56,6 +56,7 @@ include "assets/fpdf/panggildataakun.php";
                                                 <th>Nama</th>
                                                 <th>Foto</th>
                                                 <th>Status</th>
+                                                <th>Email</th>
                                                 <th>Username</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -70,6 +71,7 @@ include "assets/fpdf/panggildataakun.php";
                                                         <img width="70px" src="<?php echo base_url() . 'assets/images/faces/' . $d->foto ?>">
                                                     </td>
                                                     <td><?php echo $d->status ?></td>
+                                                    <td><?php echo $d->email ?></td>
                                                     <td><?php echo $d->username ?></td>
                                                     <td>
                                                         <a class="btn btn-sm btn-primary" href="<?php echo base_url('akun/updatedata/' . $d->id_login) ?>"><i class="mdi mdi-lead-pencil"></i></a>

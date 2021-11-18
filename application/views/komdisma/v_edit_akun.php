@@ -65,6 +65,11 @@
                                     <?php echo form_error('status', '<div class="text-small text-danger"></div>') ?>
                                 </div>
                                 <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" name="email" class="form-control" value="<?php echo $to->email ?>">
+                                    <?php echo form_error('email', '<div class="text-small text-danger"></div>') ?>
+                                </div>
+                                <div class="form-group">
                                     <label>Username</label>
                                     <input type="text" name="username" class="form-control" value="<?php echo $to->username ?>">
                                     <?php echo form_error('username', '<div class="text-small text-danger"></div>') ?>

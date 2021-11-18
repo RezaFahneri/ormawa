@@ -10,11 +10,12 @@ class Beranda extends CI_Controller {
         $this->load->helper('url');
     }
 
-	public function komdisma()
+	public function index()
 	{
 		$data['title']="Ormawa SV IPB";
 		// $data['jumlah_akun'] = $this->db->query("SELECT count FROM tbl_login")->result();
 		$this->load->view('header',$data);
+		$this->load->view('sidebar',$data);
 		$this->load->view('komdisma/v_beranda',$data);
 		$this->load->view('footer');
 	}

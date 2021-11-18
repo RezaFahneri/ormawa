@@ -2,6 +2,16 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Akun extends CI_Controller{
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('model_akun');
+        if($this->session->userdata('logged_in') == true){
+			redirect('welcome');
+		}
+
+    }
+
     public function index()
     {
         // $data['user'] = $this->db->get_where('tbl_login',['username' =>
@@ -36,6 +46,7 @@ class Akun extends CI_Controller{
             $nama                  = $this->input->post('nama');
             $foto               = $this->input->post('foto');
             $status                 = $this->input->post('status');
+            $email                             = $this->input->post('email');
             $username                             = $this->input->post('username');
             $password    = $this->input->post('password');
 
@@ -43,6 +54,7 @@ class Akun extends CI_Controller{
                 'nama'                      => $nama,
                 'foto'                      => $foto,
                 'status'                        => $status,
+                'email'                                   => $email,
                 'username'                                   => $username,
                 'password'      => $password
             );
@@ -62,6 +74,7 @@ class Akun extends CI_Controller{
         $this->form_validation->set_rules('nama', 'nama', 'required');
         $this->form_validation->set_rules('foto', 'foto', 'required');
         $this->form_validation->set_rules('status', 'status', 'required');
+        $this->form_validation->set_rules('email', 'email', 'required');
         $this->form_validation->set_rules('username', 'username', 'required');
         $this->form_validation->set_rules('password', 'password', 'required');
     }
@@ -105,6 +118,7 @@ class Akun extends CI_Controller{
             $nama               = $this->input->post('nama');
             $foto               = $this->input->post('foto');
             $status              = $this->input->post('status');
+            $email                             = $this->input->post('email');
             $username                     = $this->input->post('username');
             $password    = $this->input->post('password');
 
@@ -112,6 +126,7 @@ class Akun extends CI_Controller{
                 'nama'              => $nama,
                 'foto'              => $foto,
                 'status'             => $status,
+                'email'                                   => $email,
                 'username'                    => $username,
                 'password'    => $password
             );

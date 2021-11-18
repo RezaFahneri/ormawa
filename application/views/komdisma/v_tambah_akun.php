@@ -54,20 +54,24 @@
                                     <label>Status </label></br>
                                     <select name="status" id="status" class="form-control" required>
                                         <option value="">--pilih--</option>
-                                        <option value="ormawa">Ormawa</option>
+                                        <option value="Ormawa">Ormawa</option>
                                         <option value="DPM">DPM</option>
-                                        <option value="komdisma">komdisma</option>
-                                        <option value="pembina Oormawa">Pembina Ormawa</option>
-                                        <option value="pimpinan">Pimpinan</option>
+                                        <option value="Komdisma">komdisma</option>
+                                        <option value="Pembina Oormawa">Pembina Ormawa</option>
+                                        <option value="Pimpinan">Pimpinan</option>
                                     </select>
                                     <?php echo form_error('status', '<div class="text-small text-danger"></div>') ?>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" name="email" class="form-control" required>
+                                    <?php echo form_error('email', '<div class="text-small text-danger"></div>') ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Username</label>
                                     <input type="text" name="username" class="form-control" required>
                                     <?php echo form_error('username', '<div class="text-small text-danger"></div>') ?>
                                 </div>
-
                                 <div class="form-group">
                                     <label>Password </label>
                                     <input type="password" name="password" class="form-control" required>

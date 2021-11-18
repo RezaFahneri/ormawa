@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title><?php echo $title ?></title>
   <!-- plugins:css -->
-  <link rel="stylesheet" href="<?=base_url('assets');?>/vendors/feather/feather.css">
-  <link rel="stylesheet" href="<?=base_url('assets');?>/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" href="<?=base_url('assets');?>/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/feather/feather.css">
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
   <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?=base_url('assets');?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-  <link rel="stylesheet" href="<?=base_url('assets');?>/vendors/ti-icons/css/themify-icons.css">
-  <link rel="stylesheet" type="text/css" href="<?=base_url('assets');?>/js/select.dataTables.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" type="text/css" href="<?= base_url('assets'); ?>/js/select.dataTables.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
-  <link rel="stylesheet" href="<?=base_url('assets');?>/css/vertical-layout-light/style.css">
+  <link rel="stylesheet" href="<?= base_url('assets'); ?>/css/vertical-layout-light/style.css">
   <!-- endinject -->
-  <link rel="shortcut icon" href="<?=base_url('assets');?>/images/logoipb.png" />
+  <link rel="shortcut icon" href="<?= base_url('assets'); ?>/images/logoipb.png" />
 </head>
 
 <body>
@@ -29,23 +29,30 @@
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-              <div class="brand-logo mr-1 " >
-                <img src="<?=base_url('assets');?>/images/logosvipb.png" class="img-fluid" alt="logo">
+              <div class="brand-logo mr-1 ">
+                <img src="<?= base_url('assets'); ?>/images/logosvipb.png" class="img-fluid" alt="logo">
               </div>
               <h4>Silahkan Login</h4>
-              <form class="pt-3">
+              <form class="pt-3" action="<?php echo base_url() ?>login/proseslogin" method="post">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control" id="exampleInputEmail1" placeholder="Username">
+                  <input type="text" id='username' class="form-control form-control" id="exampleInputEmail1" placeholder="Username" name='username' required>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control" id="exampleInputPassword1" placeholder="Password">
+                  <input type="password" id='password' class="form-control form-control" id="exampleInputPassword1" placeholder="Password" name='password' required>
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="<?php echo base_url(); ?>beranda/komdisma">LOGIN</a>
+                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
                 </div>
-                <div class="text-center mt-4 font-weight-light">
-                Lupa password? <a href="#" class="text-primary">klik disini</a>
-                </div>
+                <?php
+                 $error = $this->session->flashdata('error');
+                 if(!empty($error)){
+                   echo '
+                     <div class="alert alert-danger">
+                     '.$error.' 
+                     </div>
+                   ';
+                 }
+                ?>
                 <div class="mb-2">
                 </div>
               </form>
@@ -59,16 +66,16 @@
   </div>
   <!-- container-scroller -->
   <!-- plugins:js -->
-  <script src="<?=base_url('assets');?>/../../vendors/js/vendor.bundle.base.js"></script>
+  <script src="<?= base_url('assets'); ?>/../../vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="<?=base_url('assets');?>/../../js/off-canvas.js"></script>
-  <script src="<?=base_url('assets');?>/../../js/hoverable-collapse.js"></script>
-  <script src="<?=base_url('assets');?>/../../js/template.js"></script>
-  <script src="<?=base_url('assets');?>/../../js/settings.js"></script>
-  <script src="<?=base_url('assets');?>/../../js/todolist.js"></script>
+  <script src="<?= base_url('assets'); ?>/../../js/off-canvas.js"></script>
+  <script src="<?= base_url('assets'); ?>/../../js/hoverable-collapse.js"></script>
+  <script src="<?= base_url('assets'); ?>/../../js/template.js"></script>
+  <script src="<?= base_url('assets'); ?>/../../js/settings.js"></script>
+  <script src="<?= base_url('assets'); ?>/../../js/todolist.js"></script>
   <!-- endinject -->
 </body>
 
