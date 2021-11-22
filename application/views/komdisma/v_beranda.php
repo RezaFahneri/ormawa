@@ -6,8 +6,7 @@
       <div class="col-md-12 grid-margin">
         <div class="row">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-            <h2 class="font-weight-bold">Selamat Datang</h2>
-            <h6 class="font-weight-normal mb-0">di Sistem Informasi <span class="text-primary">Ormawa Sekolah Vokasi IPB</span></h6>
+            <h3 class="font-weight-bold">Sistem Informasi</h3><h3 class="text-primary">Ormawa Sekolah Vokasi IPB</h3>
           </div>
           <div class="col-12 col-xl-4">
             <div class="justify-content-end d-flex">

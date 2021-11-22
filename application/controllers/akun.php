@@ -6,9 +6,9 @@ class Akun extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('model_akun');
-        if($this->session->userdata('logged_in') == true){
-			redirect('welcome');
-		}
+        // if($this->session->userdata('logged_in') == true){
+		// 	redirect('welcome');
+		// }
 
     }
 
@@ -20,9 +20,10 @@ class Akun extends CI_Controller{
         $data['akun'] = $this->model_akun->get_data('tbl_login')->result();
         // $data['profil'] = $this->model_admin->get_data('tbl_login')->result();
         // $this->model_akun->keamanan();
-        $this->load->view('header', $data);
+        $this->load->view('v_template',$data);
         $this->load->view('komdisma/v_daftar_akun', $data);
-        $this->load->view('footer');
+        $this->load->view('footer',$data);
+
     }
 
     public function tambahakun()
@@ -32,7 +33,7 @@ class Akun extends CI_Controller{
         $data['title'] = "Tambah Akun | Ormawa SV IPB";
         // $data['profil'] = $this->model_admin->get_data('tbl_login')->result();
         // $this->model_login->keamanan();
-        $this->load->view('header', $data);
+        $this->load->view('v_template', $data);
         $this->load->view('komdisma/v_tambah_akun', $data);
         $this->load->view('footer');
     }
@@ -102,7 +103,7 @@ class Akun extends CI_Controller{
         $data['title'] = "Update Data Akun | Ormawa SV IPB";
         // $data['profil'] = $this->model_admin->get_data('tbl_login')->result();
         // $this->model_login->keamanan();
-        $this->load->view('header', $data);
+        $this->load->view('v_template', $data);
         $this->load->view('komdisma/v_edit_akun', $data);
         $this->load->view('footer');
     }

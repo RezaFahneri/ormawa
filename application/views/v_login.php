@@ -42,16 +42,16 @@
                 </div>
                 <div class="mt-3">
                   <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">LOGIN</button>
-                </div>
+                </div></br>
                 <?php
-                 $error = $this->session->flashdata('error');
-                 if(!empty($error)){
-                   echo '
-                     <div class="alert alert-danger">
-                     '.$error.' 
+                $error = $this->session->flashdata('error');
+                if (!empty($error)) {
+                  echo '
+                     <div class="alert alert-danger" >
+                     ' . $error . ' 
                      </div>
                    ';
-                 }
+                }
                 ?>
                 <div class="mb-2">
                 </div>

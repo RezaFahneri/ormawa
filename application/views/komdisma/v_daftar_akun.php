@@ -1,33 +1,4 @@
 <!-- partial:partials/_sidebar.html -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>beranda" aria-expanded="false">
-                <i class="icon-grid menu-icon"></i>
-                <span class="menu-title">Beranda</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>akun">
-                <i class="icon-head menu-icon"></i>
-                <span class="menu-title">Akun</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>profil" aria-expanded="false">
-                <i class="icon-bar-graph menu-icon"></i>
-                <span class="menu-title">Profil</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>proker" aria-expanded="false">
-                <i class="icon-paper menu-icon"></i>
-                <span class="menu-title">Program Kerja</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-
 <?php
 
 include "assets/fpdf/panggildataakun.php";
@@ -58,7 +29,9 @@ include "assets/fpdf/panggildataakun.php";
                                                 <th>Status</th>
                                                 <th>Email</th>
                                                 <th>Username</th>
-                                                <th>Aksi</th>
+                                                <?php if ($this->session->userdata('status') == 'Komdisma') { ?>
+                                                    <th>Aksi</th>
+                                                <?php } ?>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -73,10 +46,12 @@ include "assets/fpdf/panggildataakun.php";
                                                     <td><?php echo $d->status ?></td>
                                                     <td><?php echo $d->email ?></td>
                                                     <td><?php echo $d->username ?></td>
-                                                    <td>
-                                                        <a class="btn btn-sm btn-primary" href="<?php echo base_url('akun/updatedata/' . $d->id_login) ?>"><i class="mdi mdi-lead-pencil"></i></a>
-                                                        <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-danger" href="<?php echo base_url('akun/deletedata/' . $d->id_login) ?>"><i class="mdi mdi-delete"></i></a>
-                                                    </td>
+                                                    <?php if ($this->session->userdata('status') == 'Komdisma') { ?>
+                                                        <td>
+                                                            <a class="btn btn-sm btn-primary" href="<?php echo base_url('akun/updatedata/' . $d->id_login) ?>"><i class="mdi mdi-lead-pencil"></i></a>
+                                                            <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-danger" href="<?php echo base_url('akun/deletedata/' . $d->id_login) ?>"><i class="mdi mdi-delete"></i></a>
+                                                        </td>
+                                                    <?php } ?>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>

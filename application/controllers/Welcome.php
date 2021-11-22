@@ -24,9 +24,9 @@ class Welcome extends CI_Controller {
 	}
 
 	public function index(){
-		if ($this->session->userdata('logged_in') == true) {
+		if ($this->session->userdata('logged_in') == false) {
 			redirect('login');
-		}else if ($this->session->userdata('logged_in') == false) {
+		}else if ($this->session->userdata('logged_in') == true) {
 			redirect('beranda');
 		}
 	}

@@ -1,7 +1,18 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profil extends CI_Controller{
+class Profil extends CI_Controller
+{
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('model_proker', 'model_akun', 'model_profil', 'model_login');
+        $this->load->helper('url');
+        if ($this->session->userdata('logged_in') == false) {
+            redirect('login');
+        }
+    }
+
     public function index()
     {
         // $data['user'] = $this->db->get_where('tbl_profil',['username' =>
@@ -11,21 +22,21 @@ class Profil extends CI_Controller{
         $this->load->model('model_profil');
         $data['profil'] = $this->model_profil->get_data('tbl_profil')->result();
         // $this->model_akun->keamanan();
-        $this->load->view('header', $data);
+        $this->load->view('v_template', $data);
         $this->load->view('komdisma/v_profil', $data);
-        $this->load->view('footer');
+        $this->load->view('footer', $data);
     }
 
     public function detail($id)
-	{
-   		$data['title']="Detail Profil | Ormawa SV IPB";
-    	$detail = $this->model_profil->detail_data($id);
-    	$data['detail'] = $detail;
-    	$this->load->view('header',$data);
-    	$this->load->view('komdisma/v_detail_profil',$data);
-    	$this->load->view('footer');
-    
-   }
+    {
+        $data['title'] = "Detail Profil | Ormawa SV IPB";
+        $detail = $this->model_profil->detail_data($id);
+        $data['detail'] = $detail;
+        $this->load->view('header', $data);
+        $this->load->view('sidebar', $data);
+        $this->load->view('komdisma/v_detail_profil', $data);
+        $this->load->view('footer');
+    }
 
     public function tambahprofil()
     {
@@ -34,8 +45,8 @@ class Profil extends CI_Controller{
         $data['title'] = "Tambah Profil | Ormawa SV IPB";
         // $data['profil'] = $this->model_admin->get_data('tbl_profil')->result();
         // $this->model_profil->keamanan();
-        $this->load->view('header', $data);
-        $this->load->view('komdisma/v_tambah_profil', $data);
+        $this->load->view('v_template', $data);
+        $this->load->view('komdisma/v_edit_akun', $data);
         $this->load->view('footer');
     }
 
@@ -101,8 +112,8 @@ class Profil extends CI_Controller{
         $where = array('id_profil' => $id);
         // $data['edit_profil'] = $this->model_profil->edit_data($where,'tbl_profil')->result();
         //   $data['profil'] = $this->model_profil->get_data('tbl_profil')->result();
-        $this->load->view('header', $data);
-        $this->load->view('komdisma/v_edit_profil', $data);
+        $this->load->view('v_template', $data);
+        $this->load->view('komdisma/v_edit_akun', $data);
         $this->load->view('footer');
     }
 
@@ -132,7 +143,7 @@ class Profil extends CI_Controller{
                 'id_profil' => $id
             );
 
-            $this->model_profil->update_data($where , $data, 'tbl_profil' );
+            $this->model_profil->update_data($where, $data, 'tbl_profil');
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Profil berhasil diupdate!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -141,5 +152,17 @@ class Profil extends CI_Controller{
       </div>');
             redirect('profil');
         }
+    }
+
+    public function akun()
+    {
+        $data['user'] = $this->db->get_where('tbl_login', ['username' =>
+        $this->session->userdata('username')])->row_array();
+        $id = $this->input->post('id');
+        $data['detail'] =  $this->model_akun->getDetail($id);
+        $data['title'] = "Profil Akun | Ormawa SV IPB";
+        $this->load->view('v_template', $data);
+        $this->load->view('v_profil_akun', $data);
+        $this->load->view('footer', $data);
     }
 }

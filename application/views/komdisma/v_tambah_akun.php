@@ -1,34 +1,3 @@
-<!-- partial:partials/_sidebar.html -->
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>beranda/komdisma" aria-expanded="false">
-                <i class="icon-grid menu-icon"></i>
-                <span class="menu-title">Beranda</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>akun">
-                <i class="icon-head menu-icon"></i>
-                <span class="menu-title">Akun</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>profil" aria-expanded="false">
-                <i class="icon-bar-graph menu-icon"></i>
-                <span class="menu-title">Profil</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>proker" aria-expanded="false">
-                <i class="icon-paper menu-icon"></i>
-                <span class="menu-title">Program Kerja</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-
-
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -53,12 +22,18 @@
                                 <div class="form-group">
                                     <label>Status </label></br>
                                     <select name="status" id="status" class="form-control" required>
-                                        <option value="">--pilih--</option>
-                                        <option value="Ormawa">Ormawa</option>
-                                        <option value="DPM">DPM</option>
-                                        <option value="Komdisma">komdisma</option>
-                                        <option value="Pembina Oormawa">Pembina Ormawa</option>
-                                        <option value="Pimpinan">Pimpinan</option>
+                                        <?php if ($this->session->userdata('status') == 'Komdisma') { ?>
+                                            <option value="">--pilih--</option>
+                                            <option value="Ormawa">Ormawa</option>
+                                            <option value="DPM">DPM</option>
+                                            <option value="Komdisma">komdisma</option>
+                                            <option value="Pembina Ormawa">Pembina Ormawa</option>
+                                            <option value="Pimpinan">Pimpinan</option>
+                                        <?php } else if ($this->session->userdata('status') == 'DPM') { ?>
+                                            <option value="">--pilih--</option>
+                                            <option value="Ormawa">Ormawa</option>
+                                            <option value="DPM">DPM</option>
+                                        <?php } ?>
                                     </select>
                                     <?php echo form_error('status', '<div class="text-small text-danger"></div>') ?>
                                 </div>

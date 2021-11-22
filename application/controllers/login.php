@@ -13,6 +13,9 @@ class Login extends CI_Controller {
 		// if($this->session->userdata('logged_in') == true){
 		// 	redirect('welcome');
 		// }
+		if($this->session->userdata('logged_in') == true){
+			redirect('beranda','refresh');
+		}
 	}
 
 	public function index()
@@ -65,13 +68,13 @@ class Login extends CI_Controller {
                 $this->load->model('model_login');  
                 if($this->model_login->bisalogin($username, $password))  
                 {  
-                     $session_data = array(  
-                          'username'     =>     $username,
-						  'password' => $password,
-						  'logged_in' => true,
-						  'status' => $status
-                     );  
-                     $this->session->set_userdata($session_data);  
+                    //  $session_data = array(  
+                    //       'username'     =>     $username,
+					// 	  'password' => $password,
+					// 	  'logged_in' => true,
+					// 	  'status' => $status
+                    //  );  
+                    //  $this->session->set_userdata($session_data);  
                      redirect('beranda');  
                 }  
                 else  

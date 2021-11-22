@@ -1,32 +1,3 @@
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>beranda" aria-expanded="false">
-                <i class="icon-grid menu-icon"></i>
-                <span class="menu-title">Beranda</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>akun" aria-expanded="false">
-                <i class="icon-head menu-icon"></i>
-                <span class="menu-title">Akun</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>profil"  aria-expanded="false">
-                <i class="icon-bar-graph menu-icon"></i>
-                <span class="menu-title">Profil</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url(); ?>proker">
-                <i class="icon-paper menu-icon"></i>
-                <span class="menu-title">Program Kerja</span>
-            </a>
-        </li>
-    </ul>
-</nav>
-
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -36,7 +7,11 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h3 class="m-0 font-weight-bold text-primary">Program Kerja Ormawa</h3><br>
-                                <a href="<?php echo base_url(); ?>proker/tambahproker" class="btn btn-primary">Tambah Program Kerja</a>
+                                <?php if ($this->session->userdata('status') == 'ormawa') { ?>
+                                    <a href="<?php echo base_url(); ?>proker/tambahproker" class="btn btn-primary">Tambah Program Kerja</a>
+                                <?php } else if ($this->session->userdata('status') == 'DPM') { ?>
+                                    <a href="<?php echo base_url(); ?>proker/tambahproker" class="btn btn-primary">Tambah Program Kerja</a>
+                                <?php } ?>
                                 <hr>
                             </div>
                             <div class="card-body">
@@ -71,11 +46,19 @@
                                             <th>Status</th>
                                             <td><?php echo $p->status ?></td>
                                         </tr>
-                                        <tr>
-                                            <th><a class="btn btn-primary" href="<?php echo base_url('proker/updatedata/' . $p->id_proker) ?> ">Edit</a>
-                                                <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger" href="<?php echo base_url('proker/deletedata/' . $p->id_proker) ?> ">Delete</a>
-                                            </th>
-                                        </tr>
+                                        <?php if ($this->session->userdata('status') == 'ormawa') { ?>
+                                            <tr>
+                                                <th><a class="btn btn-primary" href="<?php echo base_url('proker/updatedata/' . $p->id_proker) ?> ">Edit</a>
+                                                    <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger" href="<?php echo base_url('proker/deletedata/' . $p->id_proker) ?> ">Delete</a>
+                                                </th>
+                                            </tr>
+                                        <?php } else if ($this->session->userdata('status') == 'DPM') { ?>
+                                            <tr>
+                                                <th><a class="btn btn-primary" href="<?php echo base_url('proker/updatedata/' . $p->id_proker) ?> ">Edit</a>
+                                                    <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger" href="<?php echo base_url('proker/deletedata/' . $p->id_proker) ?> ">Delete</a>
+                                                </th>
+                                            </tr>
+                                        <?php } ?>
                                         <tr>
                                             <th></br> </th>
                                             <td></br></span></td>

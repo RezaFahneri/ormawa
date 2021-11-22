@@ -6,8 +6,11 @@ class Proker extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('model_proker');
+        $this->load->model('model_proker','model_akun','model_profil','model_login');
         $this->load->helper('url');
+		if($this->session->userdata('logged_in') == false){
+			redirect('login');
+		}
     }
 
     public function index()
@@ -18,9 +21,9 @@ class Proker extends CI_Controller
         // $data['akun'] = $this->model_akun->get_data('tbl_profil')->result();
         $data['proker'] = $this->model_proker->get_data('tbl_proker')->result();
         // $this->model_akun->keamanan();
-        $this->load->view('header', $data);
+        $this->load->view('v_template',$data);
         $this->load->view('komdisma/v_proker', $data);
-        $this->load->view('footer');
+        $this->load->view('footer',$data);
     }
 
     public function tambahproker()
@@ -30,7 +33,7 @@ class Proker extends CI_Controller
         $data['title'] = "Tambah Program Kerja | Ormawa SV IPB";
         // $data['profil'] = $this->model_admin->get_data('tbl_profil')->result();
         // $this->model_profil->keamanan();
-        $this->load->view('header', $data);
+        $this->load->view('v_template',$data);
         $this->load->view('komdisma/v_tambah_proker', $data);
         $this->load->view('footer');
     }
@@ -102,7 +105,7 @@ class Proker extends CI_Controller
         $where = array('id_proker' => $id);
         // $data['edit_proker'] = $this->model_proker->update_data($where, 'tbl_proker')->result();
         //   $data['profil'] = $this->model_profil->get_data('tbl_profil')->result();
-        $this->load->view('header', $data);
+        $this->load->view('v_template',$data);
         $this->load->view('komdisma/v_edit_proker', $data);
         $this->load->view('footer');
     }
