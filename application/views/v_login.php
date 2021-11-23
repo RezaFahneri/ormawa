@@ -28,12 +28,13 @@
       <div class="content-wrapper d-flex align-items-center auth px-0">
         <div class="row w-100 mx-0">
           <div class="col-lg-4 mx-auto">
-            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+            <div class="auth-form-light text-center py-5 px-4 px-sm-5">
               <div class="brand-logo mr-1 ">
-                <img src="<?= base_url('assets'); ?>/images/logosvipb.png" class="img-fluid" alt="logo">
+                <img src="<?= base_url('assets'); ?>/images/logosvipb.png" class="img-fluid" style="width:320px" alt="logo">
               </div>
-              <h4>Silahkan Login</h4>
-              <form class="pt-3" action="<?php echo base_url() ?>login/proseslogin" method="post">
+              <h4><b>Sistem Informasi Ormawa</b></h4>
+              <h4><b>Sekolah Vokasi Institut Pertanian Bogor</b></h4>
+              <form class="pt-3 text-center" action="<?php echo base_url() ?>login/proseslogin" method="post">
                 <div class="form-group">
                   <input type="text" id='username' class="form-control form-control" id="exampleInputEmail1" placeholder="Username" name='username' required>
                 </div>
@@ -53,6 +54,9 @@
                    ';
                 }
                 ?>
+                <div>
+                  <a target="_blank" href="https://api.whatsapp.com/send?phone=6281220501674&text=Halo%20Admin,%20Saya%20(nama)%20sebagai%20(status(ormawa/DPM/Komdisma/Pembina%20Ormawa/Pimpinan))%20lupa%20Password" class="auth-link text-black">Lupa Password?</a>
+                </div>
                 <div class="mb-2">
                 </div>
               </form>
