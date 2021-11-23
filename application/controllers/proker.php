@@ -32,6 +32,7 @@ class Proker extends CI_Controller
         // $data['user'] = $this->db->get_where('tbl_profil',['username' =>
         // $this->session->userdata('username')])->row_array();
         $data['title'] = "Tambah Program Kerja | Ormawa SV IPB";
+        $this->load->Model('Model_proker');
         // $data['profil'] = $this->Model_admin->get_data('tbl_profil')->result();
         // $this->Model_profil->keamanan();
         $this->load->view('v_template',$data);
@@ -61,7 +62,7 @@ class Proker extends CI_Controller
                 'tanggal'                    => $tanggal,
                 'status'                    => $status,
             );
-
+            $this->load->Model('Model_proker');
             $this->Model_proker->insert_data($data, 'tbl_proker');
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Profil berhasil diupdate!</strong>
@@ -85,6 +86,7 @@ class Proker extends CI_Controller
 
     public function deletedata($id)
     {
+        $this->load->Model('Model_proker');
         $where = array('id_proker' => $id);
         $this->Model_proker->delete_data($where, 'tbl_proker');
         //   $data['profil'] = $this->Model_admin->get_data('tbl_profil')->result();
@@ -104,6 +106,7 @@ class Proker extends CI_Controller
         $data['title'] = "Edit Data Program Kerja | Ormawa SV IPB";
         $data['edit_proker'] = $this->db->query("SELECT * FROM tbl_proker WHERE id_proker='$id'")->result();
         $where = array('id_proker' => $id);
+        $this->load->Model('Model_proker');
         // $data['edit_proker'] = $this->Model_proker->update_data($where, 'tbl_proker')->result();
         //   $data['profil'] = $this->Model_profil->get_data('tbl_profil')->result();
         $this->load->view('v_template',$data);
@@ -138,7 +141,7 @@ class Proker extends CI_Controller
             $where = array(
                 'id_proker' => $id
             );
-
+            $this->load->Model('Model_proker');
             $this->Model_proker->update_data($where, $data, 'tbl_proker');
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Profil berhasil diupdate!</strong>

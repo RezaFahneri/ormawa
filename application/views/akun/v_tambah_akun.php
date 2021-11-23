@@ -39,7 +39,27 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Nama Ormawa *</label>
-                                    <input type="text" name="nama_ormawa" class="form-control" >
+                                    <select name="nama_ormawa" id="nama_ormawa" class="form-control" required>
+                                            <option value="-">-</option>
+                                            <option value="BEM">Badan Eksekutif Mahasiswa</option>
+                                            <option value="DPM">Dewan Perwakilan Mahasiswa</option>
+                                            <option value="Himavo Micro IT">Himavo Micro IT</option>
+                                            <option value="Himavo Likista">Himavo Likista</option>
+                                            <option value="Himavo Akmapesa">Himavo Akmapesa</option>
+                                            <option value="Himavo Pangan dan Gizi">Himavo Pangan dan Gizi</option>
+                                            <option value="Himavo Pertanian">Himavo Pertanian</option>
+                                            <option value="Forum Mahasiswa Islam">Forum Mahasiswa Islam</option>
+                                            <option value="Forum Keluarga Mahasiswa Kristen">Forum Keluarga Mahasiswa Kristen</option>
+                                            <option value="Forum Keluarga Mahasiswa Katolik">Forum Keluarga Mahasiswa Katolik</option>
+                                            <option value="KPL Angsana">KPL Angsana</option>
+                                            <option value="Medical Team">Medical Team</option>
+                                            <option value="Teater Jendela">Teater Jendela</option>
+                                            <option value="PSM D’Voice">PSM D’Voice</option>
+                                            <option value="Music of Vocation">Music of Vocation</option>
+                                            <option value="Gema Nusantara">Gema Nusantara</option>
+                                            <option value="Agrimove">Agrimove</option>
+                                            <option value="Obscura">Obscura</option>
+                                    </select>
                                     <?php echo form_error('nama_ormawa', '<div class="text-small text-danger"></div>') ?>
                                 </div>
                                 <div class="form-group">
@@ -57,7 +77,7 @@
                                     <input type="password" name="password" class="form-control" required>
                                     <?php echo form_error('password', '<div class="text-small text-danger"></div>') ?>
                                 </div>
-                                <p>Keterangan:</p> 
+                                <p>Keterangan:</p>
                                 <p> * Wajib diisi untuk akun Ormawa, DPM, dan Pembina Ormawa</p>
                                 <button type="submit" class="btn btn-primary"><a onclick="return confirm('Akun berhasil ditambahkan!')">Submit</a></button>&nbsp &nbsp
                                 <a class="btn btn-outline-dark" href="<?php echo base_url(); ?>akun">Cancel</a>

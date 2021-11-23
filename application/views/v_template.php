@@ -51,7 +51,7 @@
                             <img src="<?php echo base_url() ?>assets/images/faces/<?php echo $this->db->where('username', $this->session->userdata('username'))->get('tbl_login')->row('foto') ?>" class="img-circle profile_img" alt="profile">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item"   href="<?php echo base_url() ?>profil/akun">
+                            <a class="dropdown-item" href="<?php echo base_url() ?>profil/akun">
                                 <i class="mdi mdi-account text-primary"></i>
                                 Profil
                             </a>
@@ -197,6 +197,37 @@
                             <i class="icon-paper menu-icon"></i>
                             <span class="menu-title">Program Kerja</span>
                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>prestasi" aria-expanded="false">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">Prestasi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>struktur" aria-expanded="false">
+                            <i class="icon-bar-graph menu-icon"></i>
+                            <span class="menu-title">Struktur Organisasi</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?php echo base_url(); ?>jadwal">
+                            <i class="icon-paper menu-icon"></i>
+                            <span class="menu-title">Jadwal</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#berkas" aria-expanded="false">
+                            <i class="icon-paper menu-icon"></i>
+                            <span class="menu-title">Berkas</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="berkas">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>proposal ">Proposal</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>lpj">LPJ</a></li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </nav>

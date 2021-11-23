@@ -19,6 +19,7 @@ class Akun extends CI_Controller
         // $this->session->userdata('username')])->row_array();
         $data['title'] = "Daftar Akun | Ormawa SV IPB";
         $data['akun'] = $this->Model_akun->get_data('tbl_login')->result();
+        $this->load->Model('Model_akun');
         // $data['profil'] = $this->Model_admin->get_data('tbl_login')->result();
         // $this->Model_akun->keamanan();
         $this->load->view('v_template', $data);
@@ -31,6 +32,7 @@ class Akun extends CI_Controller
         // $data['user'] = $this->db->get_where('tbl_login',['username' =>
         // $this->session->userdata('username')])->row_array();
         $data['title'] = "Tambah Akun | Ormawa SV IPB";
+        $this->load->Model('Model_akun');
         // $data['profil'] = $this->Model_admin->get_data('tbl_login')->result();
         // $this->Model_login->keamanan();
         $this->load->view('v_template', $data);
@@ -61,6 +63,7 @@ class Akun extends CI_Controller
                 'username'                                   => $username,
                 'password'      => $password
             );
+            $this->load->Model('Model_akun');
             $this->Model_akun->insert_data($data, 'tbl_login');
             $this->session->set_flashdata('pesan', '<div class="alert alert-primary alert-dismissible fade show" role="alert">
   			<strong>Akun berhasil ditambahkan!</strong>
@@ -86,6 +89,7 @@ class Akun extends CI_Controller
     {
         $where = array('id_login' => $id);
         $this->Model_akun->delete_data($where, 'tbl_login');
+        $this->load->Model('Model_akun');
         //   $data['profil'] = $this->Model_admin->get_data('tbl_login')->result();
         $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Akun berhasil dihapus!</strong>
@@ -103,6 +107,7 @@ class Akun extends CI_Controller
         $data['akun_edit'] = $this->db->query("SELECT * FROM tbl_login WHERE id_login='$id'")->result();
         $where = array('id_login' => $id);
         $data['title'] = "Update Data Akun | Ormawa SV IPB";
+        $this->load->Model('Model_akun');
         // $data['profil'] = $this->Model_admin->get_data('tbl_login')->result();
         // $this->Model_login->keamanan();
         $this->load->view('v_template', $data);
@@ -139,7 +144,7 @@ class Akun extends CI_Controller
             $where = array(
                 'id_login' => $id
             );
-
+            $this->load->Model('Model_akun');
             $this->Model_akun->update_data($where, $data, 'tbl_login');
             $this->session->set_flashdata('pesan', '<div class="alert alert-primary alert-dismissible fade show" role="alert">
         <strong>Data akun berhasil diupdate!</strong>

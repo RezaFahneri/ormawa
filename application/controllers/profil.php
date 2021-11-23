@@ -6,7 +6,7 @@ class Profil extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->Model('Model_proker', 'Model_akun', 'Model_profil', 'Model_login');
+        $this->load->Model('Model_akun', 'Model_profil', 'Model_login');
         $this->load->helper('url');
         if ($this->session->userdata('logged_in') == false) {
             redirect('login');
@@ -43,6 +43,7 @@ class Profil extends CI_Controller
         // $data['user'] = $this->db->get_where('tbl_profil',['username' =>
         // $this->session->userdata('username')])->row_array();
         $data['title'] = "Tambah Profil | Ormawa SV IPB";
+        $this->load->Model('Model_profil');
         // $data['profil'] = $this->Model_admin->get_data('tbl_profil')->result();
         // $this->Model_profil->keamanan();
         $this->load->view('v_template', $data);
@@ -69,6 +70,7 @@ class Profil extends CI_Controller
                 'sekretariat'                                   => $sekretariat,
                 'kontak'      => $kontak
             );
+            $this->load->Model('Model_profil');
             $this->Model_profil->insert_data($data, 'tbl_profil');
             $this->session->set_flashdata('pesan', '<div class="alert alert-primary alert-dismissible fade show" role="alert">
   			<strong>Profil berhasil ditambahkan!</strong>
@@ -91,6 +93,7 @@ class Profil extends CI_Controller
 
     public function deletedata($id)
     {
+        $this->load->Model('Model_profil');
         $where = array('id_profil' => $id);
         $this->Model_profil->delete_data($where, 'tbl_profil');
         //   $data['profil'] = $this->Model_admin->get_data('tbl_profil')->result();
@@ -108,6 +111,7 @@ class Profil extends CI_Controller
         //   $data['user'] = $this->db->get_where('tbl_login',['username' =>
         //   $this->session->userdata('username')])->row_array();
         $data['title'] = "Edit Data Profil | Ormawa SV IPB";
+        $this->load->Model('Model_profil');
         $data['edit_profil'] = $this->db->query("SELECT * FROM tbl_profil WHERE id_profil='$id'")->result();
         $where = array('id_profil' => $id);
         // $data['edit_profil'] = $this->Model_profil->edit_data($where,'tbl_profil')->result();
@@ -143,6 +147,7 @@ class Profil extends CI_Controller
                 'id_profil' => $id
             );
 
+            $this->load->Model('Model_profil');
             $this->Model_profil->update_data($where, $data, 'tbl_profil');
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Profil berhasil diupdate!</strong>
@@ -159,6 +164,7 @@ class Profil extends CI_Controller
         $data['user'] = $this->db->get_where('tbl_login', ['username' =>
         $this->session->userdata('username')])->row_array();
         $id = $this->input->post('id');
+        $this->load->Model('Model_akun');
         $data['detail'] =  $this->Model_akun->getDetail($id);
         $data['title'] = "Profil Akun | Ormawa SV IPB";
         $this->load->view('v_template', $data);
