@@ -10,7 +10,7 @@ include "assets/spreadsheet.php";
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h3 class="m-0 font-weight-bold text-primary">Profil Ormawa</h3><br>
-                                <?php if ($this->session->userdata('status') == 'ormawa') { ?>
+                                <?php if ($this->session->userdata('status') == 'Ormawa') { ?>
                                     <a href="<?php echo base_url(); ?>profil/tambahprofil" class="btn btn-primary">Tambah Profil</a>
                                 <?php } else if ($this->session->userdata('status') == 'DPM') { ?>
                                     <a href="<?php echo base_url(); ?>profil/tambahprofil" class="btn btn-primary">Tambah Profil</a>
@@ -52,7 +52,7 @@ include "assets/spreadsheet.php";
                                                 <th scope="col">Kontak </th>
                                                 <td scope="row"><span><?php echo $p->kontak ?></span></td>
                                             </tr>
-                                            <?php if ($this->session->userdata('status') == 'ormawa') { ?>
+                                            <?php if ($this->session->userdata('status') == 'Ormawa') { ?>
                                                 <tr>
                                                     <th><a class="btn btn-primary" href="<?php echo base_url('profil/updatedata/' . $p->id_profil) ?> ">Edit</a>
                                                         <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger" href="<?php echo base_url('profil/deletedata/' . $p->id_profil) ?> ">Delete</a>

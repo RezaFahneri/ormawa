@@ -6,8 +6,8 @@ class Login extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->library('session');
-		$this->load->model('model_login');
-		// if($this->Login_model->accountCheck() == true){
+		$this->load->Model('Model_login');
+		// if($this->Login_Model->accountCheck() == true){
 		// 	redirect('setup');
 		// }
 		// if($this->session->userdata('logged_in') == true){
@@ -29,10 +29,10 @@ class Login extends CI_Controller {
 	// 	$username = $this->input->post('username');
 	// 	$password = md5($this->input->post('password'));
 
-	// 	$cekuser = $this->model_login->cekuser($username);
+	// 	$cekuser = $this->Model_login->cekuser($username);
 	// 	if ($cekuser){
 
-	// 		$ceklogin = $this->model_login->ceklogin($username,$password);
+	// 		$ceklogin = $this->Model_login->ceklogin($username,$password);
 
 	// 		if ($ceklogin) {
 	// 			foreach ($ceklogin as $row);
@@ -64,9 +64,9 @@ class Login extends CI_Controller {
                 $username = $this->input->post('username');  
                 $password = $this->input->post('password');
                 $status = $this->input->post('status');  
-                //model function  
-                $this->load->model('model_login');  
-                if($this->model_login->bisalogin($username, $password))  
+                //Model function  
+                $this->load->Model('Model_login');  
+                if($this->Model_login->bisalogin($username, $password))  
                 {  
                     //  $session_data = array(  
                     //       'username'     =>     $username,

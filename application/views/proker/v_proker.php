@@ -7,7 +7,7 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h3 class="m-0 font-weight-bold text-primary">Program Kerja Ormawa</h3><br>
-                                <?php if ($this->session->userdata('status') == 'ormawa') { ?>
+                                <?php if ($this->session->userdata('status') == 'Ormawa') { ?>
                                     <a href="<?php echo base_url(); ?>proker/tambahproker" class="btn btn-primary">Tambah Program Kerja</a>
                                 <?php } else if ($this->session->userdata('status') == 'DPM') { ?>
                                     <a href="<?php echo base_url(); ?>proker/tambahproker" class="btn btn-primary">Tambah Program Kerja</a>
@@ -46,7 +46,7 @@
                                             <th>Status</th>
                                             <td><?php echo $p->status ?></td>
                                         </tr>
-                                        <?php if ($this->session->userdata('status') == 'ormawa') { ?>
+                                        <?php if ($this->session->userdata('status') == 'Ormawa') { ?>
                                             <tr>
                                                 <th><a class="btn btn-primary" href="<?php echo base_url('proker/updatedata/' . $p->id_proker) ?> ">Edit</a>
                                                     <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-danger" href="<?php echo base_url('proker/deletedata/' . $p->id_proker) ?> ">Delete</a>

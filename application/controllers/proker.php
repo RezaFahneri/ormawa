@@ -6,7 +6,7 @@ class Proker extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('model_proker','model_akun','model_profil','model_login');
+        $this->load->Model('Model_proker','Model_akun','Model_profil','Model_login');
         $this->load->helper('url');
 		if($this->session->userdata('logged_in') == false){
 			redirect('login');
@@ -18,11 +18,12 @@ class Proker extends CI_Controller
         // $data['user'] = $this->db->get_where('tbl_profil',['username' =>
         // $this->session->userdata('username')])->row_array();
         $data['title'] = "Program Kerja | Ormawa SV IPB";
-        // $data['akun'] = $this->model_akun->get_data('tbl_profil')->result();
-        $data['proker'] = $this->model_proker->get_data('tbl_proker')->result();
-        // $this->model_akun->keamanan();
+        // $data['akun'] = $this->Model_akun->get_data('tbl_profil')->result();
+        $this->load->Model('Model_proker');
+        $data['proker'] = $this->Model_proker->get_data('tbl_proker')->result();
+        // $this->Model_akun->keamanan();
         $this->load->view('v_template',$data);
-        $this->load->view('komdisma/v_proker', $data);
+        $this->load->view('proker/v_proker', $data);
         $this->load->view('footer',$data);
     }
 
@@ -31,10 +32,10 @@ class Proker extends CI_Controller
         // $data['user'] = $this->db->get_where('tbl_profil',['username' =>
         // $this->session->userdata('username')])->row_array();
         $data['title'] = "Tambah Program Kerja | Ormawa SV IPB";
-        // $data['profil'] = $this->model_admin->get_data('tbl_profil')->result();
-        // $this->model_profil->keamanan();
+        // $data['profil'] = $this->Model_admin->get_data('tbl_profil')->result();
+        // $this->Model_profil->keamanan();
         $this->load->view('v_template',$data);
-        $this->load->view('komdisma/v_tambah_proker', $data);
+        $this->load->view('proker/v_tambah_proker', $data);
         $this->load->view('footer');
     }
 
@@ -61,7 +62,7 @@ class Proker extends CI_Controller
                 'status'                    => $status,
             );
 
-            $this->model_proker->insert_data($data, 'tbl_proker');
+            $this->Model_proker->insert_data($data, 'tbl_proker');
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Profil berhasil diupdate!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -85,8 +86,8 @@ class Proker extends CI_Controller
     public function deletedata($id)
     {
         $where = array('id_proker' => $id);
-        $this->model_proker->delete_data($where, 'tbl_proker');
-        //   $data['profil'] = $this->model_admin->get_data('tbl_profil')->result();
+        $this->Model_proker->delete_data($where, 'tbl_proker');
+        //   $data['profil'] = $this->Model_admin->get_data('tbl_profil')->result();
         $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Program Kerja berhasil dihapus!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -103,10 +104,10 @@ class Proker extends CI_Controller
         $data['title'] = "Edit Data Program Kerja | Ormawa SV IPB";
         $data['edit_proker'] = $this->db->query("SELECT * FROM tbl_proker WHERE id_proker='$id'")->result();
         $where = array('id_proker' => $id);
-        // $data['edit_proker'] = $this->model_proker->update_data($where, 'tbl_proker')->result();
-        //   $data['profil'] = $this->model_profil->get_data('tbl_profil')->result();
+        // $data['edit_proker'] = $this->Model_proker->update_data($where, 'tbl_proker')->result();
+        //   $data['profil'] = $this->Model_profil->get_data('tbl_profil')->result();
         $this->load->view('v_template',$data);
-        $this->load->view('komdisma/v_edit_proker', $data);
+        $this->load->view('proker/v_edit_proker', $data);
         $this->load->view('footer');
     }
 
@@ -138,7 +139,7 @@ class Proker extends CI_Controller
                 'id_proker' => $id
             );
 
-            $this->model_proker->update_data($where, $data, 'tbl_proker');
+            $this->Model_proker->update_data($where, $data, 'tbl_proker');
             $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Profil berhasil diupdate!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -27,6 +27,7 @@ include "assets/fpdf/panggildataakun.php";
                                                 <th>Nama</th>
                                                 <th>Foto</th>
                                                 <th>Status</th>
+                                                <th>Nama Ormawa</th>
                                                 <th>Email</th>
                                                 <th>Username</th>
                                                 <?php if ($this->session->userdata('status') == 'Komdisma') { ?>
@@ -44,6 +45,7 @@ include "assets/fpdf/panggildataakun.php";
                                                         <img width="70px" src="<?php echo base_url() . 'assets/images/faces/' . $d->foto ?>">
                                                     </td>
                                                     <td><?php echo $d->status ?></td>
+                                                    <td><?php echo $d->nama_ormawa ?></td>
                                                     <td><?php echo $d->email ?></td>
                                                     <td><?php echo $d->username ?></td>
                                                     <?php if ($this->session->userdata('status') == 'Komdisma') { ?>
@@ -56,7 +58,9 @@ include "assets/fpdf/panggildataakun.php";
                                             <?php endforeach; ?>
                                         </tbody>
                                     </table></br>
-                                    <a class="btn btn-danger ti-download" href="assets/fpdf/data_akun.php"> Unduh</a>
+                                    <?php if ($this->session->userdata('status') == 'Komdisma') { ?>
+                                        <a class="btn btn-danger ti-download" href="assets/fpdf/data_akun.php"> Unduh</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

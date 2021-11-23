@@ -20,6 +20,16 @@
                                         <p>&emsp;&nbsp;<?php echo $user['username'] ?></p>
                                         <h4>Status</h4>
                                         <p>&emsp;&nbsp;<?php echo $user['status'] ?></p>
+                                        <?php if ($this->session->userdata('status') == 'Ormawa') { ?>
+                                            <h4>Nama Ormawa</h4>
+                                            <p>&emsp;&nbsp;<?php echo $user['nama_ormawa'] ?></p>
+                                        <?php } else if ($this->session->userdata('status') == 'DPM') { ?>
+                                            <h4>Nama Ormawa</h4>
+                                            <p>&emsp;&nbsp;<?php echo $user['nama_ormawa'] ?></p>
+                                        <?php } else if ($this->session->userdata('status') == 'Pembina Ormawa') { ?>
+                                            <h4>Nama Ormawa</h4>
+                                            <p>&emsp;&nbsp;<?php echo $user['nama_ormawa'] ?></p>
+                                        <?php } ?>
                                         <h4>Email</h4>
                                         <p>&emsp;&nbsp;<?php echo $user['email'] ?></p>
                                     </div><br>

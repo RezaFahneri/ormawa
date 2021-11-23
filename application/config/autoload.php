@@ -125,11 +125,11 @@ $autoload['language'] = array();
 | -------------------------------------------------------------------
 | Prototype:
 |
-|	$autoload['model'] = array('first_model', 'second_model');
+|	$autoload['Model'] = array('first_Model', 'second_Model');
 |
-| You can also supply an alternative model name to be assigned
+| You can also supply an alternative Model name to be assigned
 | in the controller:
 |
-|	$autoload['model'] = array('first_model' => 'first');
+|	$autoload['Model'] = array('first_Model' => 'first');
 */
-$autoload['model'] = array('model_akun','model_profil','model_proker','model_login');
+$autoload['Model'] = array('Model_akun','Model_profil','Model_proker','Model_login');

@@ -35,6 +35,11 @@
                                     <?php echo form_error('status', '<div class="text-small text-danger"></div>') ?>
                                 </div>
                                 <div class="form-group">
+                                    <label>Nama Ormawa *</label>
+                                    <input type="text" name="nama_ormawa" class="form-control" value="<?php echo $to->nama_ormawa?>">
+                                    <?php echo form_error('nama_ormawa', '<div class="text-small text-danger"></div>') ?>
+                                </div>
+                                <div class="form-group">
                                     <label>Email</label>
                                     <input type="text" name="email" class="form-control" value="<?php echo $to->email ?>">
                                     <?php echo form_error('email', '<div class="text-small text-danger"></div>') ?>
@@ -50,8 +55,8 @@
                                     <input type="password" name="password" class="form-control" value="<?php echo $to->password ?>">
                                     <?php echo form_error('password', '<div class="text-small text-danger"></div>') ?>
                                 </div>
-
-
+                                <p>Keterangan:</p> 
+                                <p> * Wajib diisi untuk akun Ormawa, DPM, dan Pembina Ormawa</p>
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 <a class="btn btn-outline-dark" href="<?php echo base_url(); ?>akun">Cancel</a>
                             </form>
