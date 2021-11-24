@@ -5,7 +5,7 @@
         <div class="card shadow mb-4">
           <div class="card-header py-3">
             <h4 class="m-0 font-weight-bold text-primary">Input Data Berkas</h4><br>
-            <?php foreach ($proposal_update as $u) : ?>
+            <?php foreach ($edit_proposal as $u) : ?>
               <form class="forms-sample" action="<?php echo base_url(); ?>proposal/update" method="post">
                 <div class="form-group">
                   <input type="hidden" name="id" value="<?php echo $u->id ?>">

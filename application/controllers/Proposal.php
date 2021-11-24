@@ -8,16 +8,16 @@ class Proposal extends CI_Controller
         parent::__construct();
         $this->load->Model('Model_proposal');
         $this->load->helper('url');
-        if($this->session->userdata('logged_in') == false){
-			redirect('login');
-		}
+        if ($this->session->userdata('logged_in') == false) {
+            redirect('login');
+        }
     }
 
     function index()
     {
-        $data['data_proposal'] = $this->Model_proposal->tampil_data()->result();
+        $data['data_proposal'] = $this->Model_proposal->tampil_data('data_proposal')->result();
         $data['title'] = "Proposal | Ormawa SV IPB";
-		$this->load->view('v_template', $data);
+        $this->load->view('v_template', $data);
         $this->load->view('berkas/v_proposal', $data);
         $this->load->view('footer');
     }
@@ -25,7 +25,7 @@ class Proposal extends CI_Controller
     function tambah()
     {
         $data['title'] = "Tambah Proposal | Ormawa SV IPB";
-		$this->load->view('v_template', $data);
+        $this->load->view('v_template', $data);
         $this->load->view('berkas/v_input_proposal');
         $this->load->view('footer');
     }
@@ -54,9 +54,10 @@ class Proposal extends CI_Controller
     function edit($id)
     {
         $where = array('id' => $id);
-        $data['data_proposal'] = $this->Model_proposal->edit_data($where, 'data_proposal')->result();
+        $data['edit_proposal'] = $this->db->query("SELECT * FROM data_proposal WHERE id='$id'")->result();
+        // $data['data_proposal'] = $this->Model_proposal->edit_data($where, 'data_proposal')->result();
         $data['title'] = "Edit Proposal | Ormawa SV IPB";
-		$this->load->view('v_template', $data);
+        $this->load->view('v_template', $data);
         $this->load->view('berkas/v_edit_proposal', $data);
         $this->load->view('footer');
     }
@@ -64,7 +65,6 @@ class Proposal extends CI_Controller
     function update()
     {
         $id = $this->input->post('id');
-        $data['proposal_update'] = $this->db->query("SELECT * FROM data_proposal WHERE id='$id'")->result();
         $nama_kegiatan = $this->input->post('nama_kegiatan');
         $nama_ormawa = $this->input->post('nama_ormawa');
         $deskripsi = $this->input->post('deskripsi');
@@ -81,7 +81,9 @@ class Proposal extends CI_Controller
             'berkas' => $berkas
         );
 
-        $where = array('id' => $id);
+        $where = array(
+            'id' => $id
+        );
         $this->load->Model('Model_proposal');
         $this->Model_proposal->update_data($where, $data, 'data_proposal');
         redirect('proposal');
@@ -144,8 +146,6 @@ class Proposal extends CI_Controller
                     unset($_SESSION["success"]);
                 }
                 redirect('proposal/index');
-
-
             }
         }
 

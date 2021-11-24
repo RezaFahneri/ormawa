@@ -23,11 +23,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($data_proposal as $u)
-                                        ?>
+                                <?php
+                                $no = 1;
+                                foreach ($data_proposal as $u) :
+                                ?>
                                     <tr>
                                         <td><?= date("d/m/y, H:i:s") ?></td>
                                         <td><?php echo $u->nama_kegiatan ?></td>
@@ -37,11 +36,12 @@
 
                                             <a class="btn btn-sm btn-link ti-zoom-in" href=""></a> |
                                             <?php if ($this->session->userdata('status') == 'DPM') { ?>
-                                                <a class="btn btn-sm btn-link" href="<?php echo site_url('/proposal/edit/' . $u->id)?>"><i class="mdi mdi-lead-pencil"></i></a> |
+                                                <a class="btn btn-sm btn-link" href="<?php echo site_url('/proposal/edit/' . $u->id) ?>"><i class="mdi mdi-lead-pencil"></i></a> |
                                             <?php } ?>
                                             <a onclick="return confirm('Yakin hapus data ini?')" class="btn btn-sm btn-link ti-download" href=""></a>
                                         </td>
                                     </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
